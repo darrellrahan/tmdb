@@ -1,13 +1,253 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: sans-serif;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+/* search area */
+
+.search-area {
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0) 100%
+    ),
+    url("../src/assets/search-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 4rem 5rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-area h1 {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.search-area h3 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.search-area input {
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 1.25rem;
+  font-size: 20px;
+}
+
+/* topic */
+
+.trending {
+  background-image: url("https://www.themoviedb.org/assets/2/v4/misc/trending-bg-39afc2a5f77e31d469b25c187814c0a2efef225494c038098d62317d923f8415.svg");
+  background-position: 50% 200px;
+  background-size: 1400px;
+  background-repeat: no-repeat;
+}
+
+.topic-area {
+  padding: 1rem 5rem;
+  margin-bottom: 2rem;
+}
+
+.topic-area .top {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.topic-area h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.topic-area button {
+  border: 2px solid rgb(3, 37, 65);
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(3, 37, 65);
+  transition: all 0.3s linear;
+  padding: 8px 40px;
+}
+
+.topic-area button:last-of-type {
+  margin-left: -1.95rem;
+}
+
+.topic-area .active {
+  color: rgb(30, 213, 169);
+  background-color: rgb(3, 37, 65);
+}
+
+.horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.single-item img {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  width: 270px;
+  height: 370px;
+  object-fit: cover;
+}
+
+.single-item .date {
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* upcoming */
+
+.upcoming {
+  margin: 0 5rem;
+  padding: 2rem 3rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(3, 37, 65, 0.8) 0%,
+      rgba(3, 37, 65, 0) 100%
+    ),
+    url("../src/assets/upcoming-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.upcoming button {
+  color: white;
+  border-color: rgb(30, 213, 169);
+}
+
+.upcoming button.active {
+  background-color: rgb(30, 213, 169);
+  color: white;
+}
+
+.upcoming img {
+  width: 300px;
+  height: 200px;
+}
+
+.upcoming .single-item h4,
+.upcoming .single-item p {
+  text-align: center;
+}
+
+.upcoming ::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+
+/* search result */
+
+.search-result {
+  text-align: center;
+}
+
+.search-result button,
+.back-btn {
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  transition: all 0.3s linear;
+  width: auto;
+  margin-left: 0;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  border: none;
+  color: white;
+}
+
+.search-result button:hover,
+.back-btn:hover {
+  color: black;
+}
+
+.search-result img {
+  width: 110px;
+  height: 160px;
+  margin-bottom: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-result .single-item {
+  display: flex;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.search-result .text {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: left;
+}
+
+.search-result .text h4 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.search-result .text .date {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+.search-result .text .overview {
+  opacity: 0.8;
+}
+
+/* not found */
+
+.notfound {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.notfound h1 {
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
 }
