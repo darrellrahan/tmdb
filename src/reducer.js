@@ -37,4 +37,13 @@ export default function reducer(state, action) {
   if (action.type === ACTIONS.SET_RESULTISPERSON) {
     return { ...state, resultIsPerson: action.payload.value };
   }
+  if (action.type === ACTIONS.SET_SINGLEDATA) {
+    return { ...state, singleData: action.payload.value };
+  }
+  if (action.type === ACTIONS.SET_SINGLEDATA_ID) {
+    return { ...state, singleDataId: action.payload.value };
+  }
+  if (action.type === ACTIONS.SET_SINGLEDATA_TYPE) {
+    return { ...state, singleDataType: action.payload.value };
+  }
 }

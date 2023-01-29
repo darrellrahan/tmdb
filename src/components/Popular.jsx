@@ -2,6 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../context";
 import { ACTIONS } from "../actions";
 import unavailableImg from "../assets/unavailable-img.png";
+import { Link } from "react-router-dom";
 
 const Popular = () => {
   const { states, dispatch } = useGlobalContext();
@@ -41,36 +42,38 @@ const Popular = () => {
             current;
 
           return (
-            <div key={id} className="single-item">
-              <img
-                src={
-                  poster_path !== null
-                    ? `https://image.tmdb.org/t/p/w200/${poster_path}`
-                    : unavailableImg
-                }
-                alt="img"
-              />
-              <div className="text">
-                <h4 className="title">
-                  {states.popularType === "movie"
-                    ? title !== undefined && title.substring(0, 30)
-                    : name !== undefined && name.substring(0, 30)}
-                </h4>
-                <p className="date">
-                  {new Intl.DateTimeFormat("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  }).format(
-                    new Date(
-                      states.popularType === "movie"
-                        ? release_date !== undefined && release_date
-                        : first_air_date !== undefined && first_air_date
-                    )
-                  )}
-                </p>
+            <Link to={`${states.popularType}/${id}`} key={id}>
+              <div className="single-item">
+                <img
+                  src={
+                    poster_path !== null
+                      ? `https://image.tmdb.org/t/p/w200/${poster_path}`
+                      : unavailableImg
+                  }
+                  alt="img"
+                />
+                <div className="text">
+                  <h4 className="title">
+                    {states.popularType === "movie"
+                      ? title !== undefined && title.substring(0, 30)
+                      : name !== undefined && name.substring(0, 30)}
+                  </h4>
+                  <p className="date">
+                    {new Intl.DateTimeFormat("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    }).format(
+                      new Date(
+                        states.popularType === "movie"
+                          ? release_date !== undefined && release_date
+                          : first_air_date !== undefined && first_air_date
+                      )
+                    )}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
