@@ -46,4 +46,7 @@ export default function reducer(state, action) {
   if (action.type === ACTIONS.SET_SINGLEDATA_TYPE) {
     return { ...state, singleDataType: action.payload.value };
   }
+  if (action.type === ACTIONS.SET_VIDEO_DATA) {
+    return { ...state, videoData: action.payload.value };
+  }
 }

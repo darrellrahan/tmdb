@@ -25,6 +25,7 @@ export function AppProvider({ children }) {
     singleData: {},
     singleDataId: "",
     singleDataType: "",
+    videoData: {},
   });
 
   // get trending data
@@ -149,6 +150,26 @@ export function AppProvider({ children }) {
 
     getSingleData();
   }, [states.singleDataId, states.singleDataType]);
+
+  // get video data
+  useEffect(() => {
+    function getVideoData() {
+      if (states.singleData.length !== 0) {
+        const videoWithTrailer =
+          states.singleData.videos !== undefined &&
+          states.singleData.videos.results.find(
+            (current) => current.type === "Trailer"
+          );
+
+        dispatch({
+          type: ACTIONS.SET_VIDEO_DATA,
+          payload: { value: videoWithTrailer },
+        });
+      }
+    }
+
+    getVideoData();
+  }, [states.singleData]);
 
   return (
     <GlobalContext.Provider value={{ states, dispatch }}>
