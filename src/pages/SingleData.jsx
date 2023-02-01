@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ACTIONS } from "../actions";
 import { useGlobalContext } from "../context";
@@ -10,7 +10,6 @@ import YouTube from "react-youtube";
 const SingleData = () => {
   const { id, type } = useParams();
   const { states, dispatch } = useGlobalContext();
-  const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
 
   useEffect(() => {
     dispatch({ type: ACTIONS.SET_SINGLEDATA_ID, payload: { value: id } });
@@ -31,10 +30,15 @@ const SingleData = () => {
     })`,
       }}
     >
-      {isTrailerPlaying ? (
+      {states.isTrailerPlaying ? (
         <>
           <button
-            onClick={() => setIsTrailerPlaying(false)}
+            onClick={() =>
+              dispatch({
+                type: ACTIONS.SET_IS_TRAILER_PLAYING,
+                payload: { value: false },
+              })
+            }
             style={{
               color: "white",
               fontSize: "40px",
@@ -149,7 +153,12 @@ const SingleData = () => {
                     <button
                       className="back-btn play"
                       style={{ marginBottom: "0" }}
-                      onClick={() => setIsTrailerPlaying(true)}
+                      onClick={() =>
+                        dispatch({
+                          type: ACTIONS.SET_IS_TRAILER_PLAYING,
+                          payload: { value: true },
+                        })
+                      }
                     >
                       <BsPlayFill /> Play Trailer
                     </button>

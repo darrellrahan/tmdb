@@ -26,6 +26,8 @@ export function AppProvider({ children }) {
     singleDataId: "",
     singleDataType: "",
     videoData: {},
+    dimensions: { height: window.innerHeight, width: window.innerWidth },
+    isTrailerPlaying: false,
   });
 
   // get trending data
@@ -170,6 +172,22 @@ export function AppProvider({ children }) {
 
     getVideoData();
   }, [states.singleData]);
+
+  // get window dimensions
+  useEffect(() => {
+    function handleResize() {
+      dispatch({
+        type: ACTIONS.SET_DIMENSIONS,
+        payload: { height: window.innerHeight, width: window.innerWidth },
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   return (
     <GlobalContext.Provider value={{ states, dispatch }}>

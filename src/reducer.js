@@ -49,4 +49,16 @@ export default function reducer(state, action) {
   if (action.type === ACTIONS.SET_VIDEO_DATA) {
     return { ...state, videoData: action.payload.value };
   }
+  if (action.type === ACTIONS.SET_DIMENSIONS) {
+    return {
+      ...state,
+      dimensions: {
+        height: action.payload.height,
+        width: action.payload.width,
+      },
+    };
+  }
+  if (action.type === ACTIONS.SET_IS_TRAILER_PLAYING) {
+    return { ...state, isTrailerPlaying: action.payload.value };
+  }
 }

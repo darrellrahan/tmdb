@@ -55,11 +55,19 @@ const Upcoming = () => {
                 <div className="text">
                   <h4 className="title">
                     {states.upcomingType === "movie"
-                      ? title !== undefined && title.substring(0, 30)
-                      : name !== undefined && name.substring(0, 30)}
+                      ? title !== undefined &&
+                        title.substring(
+                          0,
+                          states.dimensions.width <= 1000 ? 13 : 30
+                        )
+                      : name !== undefined &&
+                        name.substring(
+                          0,
+                          states.dimensions.width <= 1000 ? 13 : 30
+                        )}
                   </h4>
                   <p className="date">
-                    Release Date:{" "}
+                    {states.dimensions.width >= 1000 && "Release Date: "}
                     {new Intl.DateTimeFormat("en-US", {
                       month: "short",
                       day: "numeric",
