@@ -397,8 +397,8 @@ a {
   .single-item img {
     border-radius: 8px;
     margin-bottom: 1rem;
-    width: 150px;
-    height: 250px;
+    width: 125px;
+    height: 225px;
     object-fit: cover;
   }
 
