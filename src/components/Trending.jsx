@@ -10,7 +10,7 @@ const Trending = () => {
   return (
     <div className="topic-area trending">
       <div className="top">
-        <h3>Trending Changed</h3>
+        <h3>Trending</h3>
         <div className="buttons">
           <button
             onClick={() =>
