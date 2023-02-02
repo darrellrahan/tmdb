@@ -88,9 +88,11 @@ const SearchResult = () => {
                   <p className="overview">
                     {overview === ""
                       ? "No overview available :("
-                      : overview.length > 280
-                      ? `${overview.substring(0, 280)} ...`
-                      : overview}
+                      : states.dimensions.width >= 1000
+                      ? overview.length > 280
+                        ? `${overview.substring(0, 280)} ...`
+                        : overview
+                      : `${overview.substring(0, 35)} ...`}
                   </p>
                 </div>
               </div>

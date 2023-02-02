@@ -11,7 +11,11 @@ const SearchArea = () => {
       <h3>Millions of movies and TV shows to discover. Explore now.</h3>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder={
+          states.dimensions.width <= 1000
+            ? "Search..."
+            : "Search for a movie and tv show..."
+        }
         autoComplete="off"
         onChange={(e) =>
           dispatch({
