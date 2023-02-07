@@ -59,7 +59,7 @@ const Upcoming = () => {
                       : name !== undefined && name.substring(0, 30)}
                   </h4>
                   <p className="date">
-                    {states.dimensions.width >= 1000 && "Release Date: "}
+                    Release Date:{" "}
                     {new Intl.DateTimeFormat("en-US", {
                       month: "short",
                       day: "numeric",

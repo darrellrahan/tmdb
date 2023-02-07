@@ -20,6 +20,7 @@ const SingleData = () => {
     <div
       className="singledata-ct"
       style={{
+        bottom: states.isTrailerPlaying && "0",
         backgroundImage: `linear-gradient(
       to right,
       rgba(3, 37, 65, 0.8) 0%,
@@ -41,10 +42,10 @@ const SingleData = () => {
             }
             style={{
               color: "white",
-              fontSize: "40px",
+              fontSize: states.dimensions.width >= 1000 ? "40px" : "20px",
               position: "absolute",
               top: "2.5rem",
-              right: "2.5rem",
+              right: states.dimensions.width >= 1000 ? "2.5rem" : "1.75rem",
               fontWeight: "bold",
             }}
           >
@@ -53,23 +54,26 @@ const SingleData = () => {
           <YouTube
             videoId={states.videoData.key}
             opts={{
+              width: "350",
+              height: "250",
               playerVars: { autoplay: 1 },
             }}
-            style={{ transform: "scale(1.5)" }}
+            style={{
+              transform: states.dimensions.width >= 1000 && "scale(1.5)",
+              marginTop: states.dimensions.width <= 1000 && "3rem",
+            }}
           />
         </>
       ) : (
         <div className="box">
-          <div style={{ height: "600px" }}>
-            <img
-              src={
-                states.singleData.poster_path !== null
-                  ? `https://image.tmdb.org/t/p/w400/${states.singleData.poster_path}`
-                  : unavailableImg
-              }
-              alt="img"
-            />
-          </div>
+          <img
+            src={
+              states.singleData.poster_path !== null
+                ? `https://image.tmdb.org/t/p/w400/${states.singleData.poster_path}`
+                : unavailableImg
+            }
+            alt="img"
+          />
           <div className="details-ct">
             <div>
               <h1>
@@ -134,7 +138,7 @@ const SingleData = () => {
                   <h3>
                     {states.singleData.production_countries !== undefined &&
                     states.singleData.production_countries.length !== 0
-                      ? states.singleData.production_countries[0].name
+                      ? states.singleData.production_countries[0].iso_3166_1
                       : "-"}
                   </h3>
                 </div>
